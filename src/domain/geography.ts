@@ -16,7 +16,7 @@ export function computeProximityPercent(distance: number): number {
 
 export function generateSquareCharacters(
   proximity: number,
-  theme: "light" | "dark"
+  theme: "light" | "dark",
 ): string[] {
   const characters = new Array<string>(5);
   const greenSquareCount = Math.floor(proximity / 20);
@@ -26,7 +26,7 @@ export function generateSquareCharacters(
   characters.fill("🟨", greenSquareCount, greenSquareCount + yellowSquareCount);
   characters.fill(
     theme === "light" ? "⬜" : "⬜",
-    greenSquareCount + yellowSquareCount
+    greenSquareCount + yellowSquareCount,
   );
 
   return characters;
@@ -34,13 +34,13 @@ export function generateSquareCharacters(
 
 export function getCompassDirection(
   guessedCountry: Country,
-  country: Country
+  country: Country,
 ): Direction {
   const bearing = geolib.getRhumbLineBearing(guessedCountry, country);
 
   if (isNaN(bearing)) {
     throw new Error(
-      "Could not calculate bearing for given points. Check your bearing function"
+      "Could not calculate bearing for given points. Check your bearing function",
     );
   }
 
@@ -66,7 +66,7 @@ export function getCompassDirection(
 
 export function formatDistance(
   distanceInMeters: number,
-  distanceUnit: "km" | "miles"
+  distanceUnit: "km" | "miles",
 ) {
   const distanceInKm = distanceInMeters / 1000;
 

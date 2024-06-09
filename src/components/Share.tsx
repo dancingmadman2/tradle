@@ -39,7 +39,7 @@ export function Share({
 
   const endDate = DateTime.fromISO(dayString);
   const dayCount = Math.floor(
-    Interval.fromDateTimes(START_DATE, endDate).length("day")
+    Interval.fromDateTimes(START_DATE, endDate).length("day"),
   );
 
   const shareText = useMemo(() => {
@@ -140,7 +140,7 @@ export function Share({
       </Modal>
       <CopyToClipboard
         text={[title, guessesString, "https://oec.world/en/games/tradle"].join(
-          "\n"
+          "\n",
         )}
         onCopy={() => toast(t("copy"))}
         options={{

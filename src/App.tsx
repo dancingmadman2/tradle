@@ -9,6 +9,8 @@ import { InfosFr } from "./components/panels/InfosFr";
 import { Settings } from "./components/panels/Settings";
 import { Stats } from "./components/panels/Stats";
 import { useSettings } from "./hooks/useSettings";
+import bottomShip from "./assets/images/bottom-ship.png";
+import topShip from "./assets/images/top-ship.png";
 
 function App() {
   const { i18n } = useTranslation();
@@ -33,7 +35,7 @@ function App() {
   return (
     <>
       <div className="absolute hidden md:block">
-        <img src="images/top-ship.png" alt="logo" width="371" />
+        <img src={topShip} alt="logo" width="371" />
       </div>
       <ToastContainer
         hideProgressBar
@@ -67,10 +69,7 @@ function App() {
         close={() => setStatsOpen(false)}
         distanceUnit={settingsData.distanceUnit}
       />
-      <div
-        className="flex justify-center flex-auto relative"
-        // style={{ background: "linear-gradient(#2c5363,#0f2027)" }}
-      >
+      <div className="flex justify-center flex-auto relative">
         <div className="w-full max-w-lg flex flex-col relative z-10 bg-white bg-opacity-75 md:bg-transparent">
           <header className="border-b-2 px-3 border-gray-200 flex justify-between">
             <button
@@ -146,7 +145,7 @@ function App() {
           </footer>
         </div>
         <div className="absolute bottom-0 right-0 z-0">
-          <img src="images/bottom-ship.png" alt="logo" width="342" />
+          <img src={bottomShip} alt="logo" width="342" />
         </div>
       </div>
     </>

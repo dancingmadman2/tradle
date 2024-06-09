@@ -30,7 +30,7 @@ const AutoCompleteItem = forwardRef<HTMLDivElement, ItemProps>(
         </div>
       </Group>
     </div>
-  )
+  ),
 );
 AutoCompleteItem.displayName = "Autocomplete Item";
 const AutoCompleteItemAprilFools = forwardRef<HTMLDivElement, ItemProps>(
@@ -42,7 +42,7 @@ const AutoCompleteItemAprilFools = forwardRef<HTMLDivElement, ItemProps>(
         </div>
       </Group>
     </div>
-  )
+  ),
 );
 AutoCompleteItemAprilFools.displayName = "Autocomplete Item April Fools";
 

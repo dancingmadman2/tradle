@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 module.exports = {
   darkMode: "class",
   content: ["./src/**/*.{js,jsx,ts,tsx}"],

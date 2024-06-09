@@ -1013,7 +1013,7 @@ export const fictionalCountries: Country[] = [
 ];
 
 export const countriesWithImage = countries.filter((c) =>
-  countryCodesWithImage.includes(c.code.toLowerCase())
+  countryCodesWithImage.includes(c.code.toLowerCase()),
 );
 
 export function getCountryName(language: string, country: Country | undefined) {
@@ -1289,12 +1289,12 @@ export const countryISOMapping: Iso = {
 
 export function getCountryPrettyName(
   str: string | undefined,
-  isAprilFools = false
+  isAprilFools = false,
 ): string {
   const items = isAprilFools ? fictionalCountries : countries;
   if (str) {
     const country = items.find(
-      (c) => sanitizeCountryName(c.name.toLowerCase()) === str
+      (c) => sanitizeCountryName(c.name.toLowerCase()) === str,
     );
     if (country) {
       return isAprilFools
@@ -1311,16 +1311,16 @@ export function getCountryByName(countryName: string): Country | undefined {
   return countries.find(
     (country) =>
       sanitizeCountryName(getCountryName(i18n.resolvedLanguage, country)) ===
-      sanitizeCountryName(countryName)
+      sanitizeCountryName(countryName),
   );
 }
 
 export function getFictionalCountryByName(
-  countryName: string
+  countryName: string,
 ): Country | undefined {
   return fictionalCountries.find(
     (country) =>
       sanitizeCountryName(getCountryName(i18n.resolvedLanguage, country)) ===
-      sanitizeCountryName(countryName)
+      sanitizeCountryName(countryName),
   );
 }

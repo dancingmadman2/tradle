@@ -27,10 +27,10 @@ function loadSettings(): SettingsData {
 
 export function useSettings(): [
   SettingsData,
-  (newSettings: Partial<SettingsData>) => void
+  (newSettings: Partial<SettingsData>) => void,
 ] {
   const [settingsData, setSettingsData] = useState<SettingsData>(
-    loadSettings()
+    loadSettings(),
   );
 
   const updateSettingsData = useCallback(
@@ -43,7 +43,7 @@ export function useSettings(): [
       setSettingsData(updatedSettings);
       localStorage.setItem("settings", JSON.stringify(updatedSettings));
     },
-    [settingsData]
+    [settingsData],
   );
 
   return [settingsData, updateSettingsData];

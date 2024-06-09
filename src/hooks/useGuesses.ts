@@ -2,10 +2,10 @@ import { useCallback, useState } from "react";
 import { Guess, loadAllGuesses, saveGuesses } from "../domain/guess";
 
 export function useGuesses(
-  dayString: string
+  dayString: string,
 ): [Guess[], (guess: Guess) => void] {
   const [guesses, setGuesses] = useState<Guess[]>(
-    loadAllGuesses()[dayString] ?? []
+    loadAllGuesses()[dayString] ?? [],
   );
 
   const addGuess = useCallback(
@@ -15,7 +15,7 @@ export function useGuesses(
       setGuesses(newGuesses);
       saveGuesses(dayString, newGuesses);
     },
-    [dayString, guesses]
+    [dayString, guesses],
   );
 
   return [guesses, addGuess];

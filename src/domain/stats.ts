@@ -57,7 +57,7 @@ export function getStatsData(): StatsData {
   }
 
   const winCount = Object.values(guessDistribution).reduce(
-    (total, tries) => total + tries
+    (total, tries) => total + tries,
   );
 
   return {

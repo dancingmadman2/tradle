@@ -62,12 +62,12 @@ export function Game({ settingsData }: GameProps) {
   const [hideImageMode, setHideImageMode] = useMode(
     "hideImageMode",
     dayString,
-    settingsData.noImageMode
+    settingsData.noImageMode,
   );
   const [rotationMode, setRotationMode] = useMode(
     "rotationMode",
     dayString,
-    settingsData.rotationMode
+    settingsData.rotationMode,
   );
 
   const gameEnded =
@@ -107,7 +107,7 @@ export function Game({ settingsData }: GameProps) {
         getIpData();
       }
     },
-    [addGuess, country, currentGuess, t, isAprilFools]
+    [addGuess, country, currentGuess, t, isAprilFools],
   );
 
   useEffect(() => {
@@ -146,7 +146,7 @@ export function Game({ settingsData }: GameProps) {
           if (error.response) {
             // Request made and server responded
             console.log(
-              `⚠️ ${error.response.status}: Unable to post tradle score.`
+              `⚠️ ${error.response.status}: Unable to post tradle score.`,
             );
           } else if (error.request) {
             // The request was made but no response was received
@@ -171,6 +171,9 @@ export function Game({ settingsData }: GameProps) {
     iframeSrc = `https://oec.world/en/visualize/embed/tree_map/hs92/export/${oecCode}/all/show/2022/?controls=false&title=false&click=false`;
     oecLink = `https://oec.world/en/profile/country/${country3LetterCode}`;
   }
+  console.log(country);
+  console.log("Iframe URL:", iframeSrc);
+  console.log("Country 3-Letter Code:", country3LetterCode);
 
   return (
     <div className="flex-grow flex flex-col mx-2 relative">
@@ -183,7 +186,6 @@ export function Game({ settingsData }: GameProps) {
           {t("showCountry")}
         </button>
       )}
-      {/* <div className="my-1 mx-auto"> */}
       <h2 className="font-bold text-center">
         Guess which country exports these products!
       </h2>
@@ -209,6 +211,8 @@ export function Game({ settingsData }: GameProps) {
             height="315"
             src={iframeSrc}
             frameBorder="0"
+            onLoad={() => console.log("Iframe loaded successfully")}
+            onError={() => console.error("Error loading iframe")}
           />
         ) : null}
       </div>
@@ -241,7 +245,7 @@ export function Game({ settingsData }: GameProps) {
               isAprilFools={isAprilFools}
             />
             <a
-              className="underline w-full text-center block mt-4 flex justify-center"
+              className="underline w-full text-center block mt-4 justify-center"
               href={oecLink}
               target="_blank"
               rel="noopener noreferrer"
@@ -263,7 +267,7 @@ export function Game({ settingsData }: GameProps) {
               {t("showOnGoogleMaps")}
             </a>
             {isAprilFools ? (
-              <div className="w-full text-center block mt-4 flex flex-col justify-center text-2xl font-bold">
+              <div className="w-full text-center block mt-4 flex-col justify-center text-2xl font-bold">
                 <div>🐶 🚲 🌪 🏚</div>
                 <div>Happy April Fools!</div>
                 <div>👠 🤖 🦁 🎍</div>
@@ -279,12 +283,6 @@ export function Game({ settingsData }: GameProps) {
                 setCurrentGuess={setCurrentGuess}
                 isAprilFools={isAprilFools}
               />
-              {/* <button
-                className="border-2 uppercase my-0.5 hover:bg-gray-50 active:bg-gray-100 dark:hover:bg-slate-800 dark:active:bg-slate-700"
-                type="submit"
-              >
-                🌍 {t("guess")}
-              </button> */}
               <div className="text-left">
                 <button className="my-2 inline-block justify-end bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded items-center">
                   {isAprilFools ? "🪄" : "🌍"} <span>Guess</span>
